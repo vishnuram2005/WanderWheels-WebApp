@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wander Wheels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <svg class="topbar__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="34" r="7" stroke="currentColor" stroke-width="2.5"/>
+        <circle cx="36" cy="34" r="7" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M12 34L20 16H28L24 26M36 34L28 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 16H26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M24 26H36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Wander Wheels</h1>
+        <p class="tagline">
+          Your Ultimate Bike Travel Companion
+        </p>
+      </div>
+    </div>
+    <div class="topbar__stats" id="headline-stats">
+      <div class="stat"><span class="stat__value" id="stat-count">—</span><span class="stat__label">routes tracked</span></div>
+      <div class="stat"><span class="stat__value" id="stat-avg">—</span><span class="stat__label">avg total fare</span></div>
+    </div>
+  </header>
+
+  <section class="console">
+    <div class="field">
+      <label for="search">Search</label>
+      <input type="text" id="search" placeholder="Destination, city, or district…">
+    </div>
+    <div class="field">
+      <label for="state">State</label>
+      <select id="state"><option value="">All states</option></select>
+    </div>
+    <div class="field">
+      <label for="trip_type">Trip type</label>
+      <select id="trip_type"><option value="">All group sizes</option></select>
+    </div>
+    <div class="field">
+      <label for="season">Best season</label>
+      <select id="season"><option value="">Any season</option></select>
+    </div>
+    <div class="field">
+      <label for="sort_by">Sort by</label>
+      <select id="sort_by">
+        <option value="total_fare">Total fare</option>
+        <option value="distance_km">Distance</option>
+        <option value="duration_days">Duration</option>
+        <option value="temperature_c">Temperature</option>
+        <option value="destination">Name</option>
+      </select>
+    </div>
+    <div class="field field--order">
+      <label for="order">Order</label>
+      <select id="order">
+        <option value="asc">Low → High</option>
+        <option value="desc">High → Low</option>
+      </select>
+    </div>
+  </section>
+
+  <main>
+    <div class="results-bar">
+      <p id="results-count">Loading routes…</p>
+      <div class="pagination" id="pagination-top"></div>
+    </div>
+
+    <div id="cards" class="cards"></div>
+
+    <div class="pagination" id="pagination-bottom"></div>
+
+    <section class="insights">
+      <h2>Fare insights</h2>
+      <p class="insights__sub">Total Fare = Petrol Fare + Food Fare + Toll Fare + Medical Emergency Expense</p>
+      <div class="insights__grid">
+        <div class="chart-card">
+          <h3>Average total fare by group size</h3>
+          <canvas id="chart-trip-type"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Top 10 costliest states (avg. total fare)</h3>
+          <canvas id="chart-state"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+  <footer>
+    <p>Data generated for demonstration &middot; Departure point: Coimbatore, Tamil Nadu &middot; Avg. mileage assumed 35 km/l &middot; Two-wheelers are toll-exempt on Indian highways</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
